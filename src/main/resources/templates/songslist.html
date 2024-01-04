@@ -13,7 +13,7 @@
     <ul>
         <li th:each="current : ${songs}">
             <h5 th:text="${current.title}"> </h5>
-            <a th:href="@{/songs/details(name=${current.title})}" th:text="${current.title}"></a>
+            <a th:href="@{/songs/details(id=${current.id})}" th:text="${current.title}"></a>
         </li>
     </ul>
 </div>

@@ -28,19 +28,20 @@ public class SongsController {
         return "songslist";
     }
     @GetMapping ("/details")
-    public String songsDetails(Model model , @RequestParam String name) {
-        Song foundSong = getSong(name);
+    public String songsDetails(Model model , @RequestParam int id) {
+        Song foundSong = getSong(id);
         model.addAttribute("song",foundSong);
         return "songdetail";
     }
 
-    private Song getSong(String name) {
+    private Song getSong(int id) {
         List<Song> songs = getSongs();
+        Song found = null;
         for (Song s : songs) {
-            if (s.getTitle().equals(name)) {
-                return s;
+            if (s.getId() == id) {
+                found = s;
             }
         }
-        return null;
+        return found;
     }
 }
